@@ -155,11 +155,11 @@ export class NodeEngine implements Engine {
     enableDebugLogs,
     enableEngineDebugMode,
     dirname,
-    engineType,
+    useUds,
     activeProvider,
   }: EngineConfig) {
     this.dirname = dirname
-    this.useUds = engineType === 'uds'
+    this.useUds = useUds ?? false // === undefined ? process.platform !== 'win32' : useUds
     this.env = env
     this.cwd = this.resolveCwd(cwd)
     this.enableDebugLogs = enableDebugLogs ?? false
